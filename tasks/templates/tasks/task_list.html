@@ -1,0 +1,30 @@
+{% extends 'tasks/base.html' %}
+
+{% block content %}
+<h1 class="title">
+Tasks
+</h1>
+<p class="subtitle">
+2022
+</p>
+<p class="subtitle">
+    <button class="button is-primary" hx-get="{% url 'task-create' %}" hx-target="#taskModal">Add</button>
+</p>
+
+
+<div x-data="{ SelectedMonth: '{{ selected_month.number }}' }">
+
+    <div class="tabs is-boxed">
+        <ul>
+            {% for month in months %}
+                <li :class="{ 'is-active': SelectedMonth === '{{ month.number }}' }" @click="SelectedMonth = '{{ month.number }}'">
+                    <a hx-get="{% url 'task-list' month.number %}" hx-target="#taskList" hx-push-url="true">{{ month }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div id="taskList" hx-get="{{ request.next }}" hx-trigger="load, taskListChanged"></div>
+
+</div>
+{% endblock %}

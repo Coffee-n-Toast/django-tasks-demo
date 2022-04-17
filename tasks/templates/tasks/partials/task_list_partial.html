@@ -1,0 +1,40 @@
+<div class="columns">
+    <div class="column">
+        <p class="subtitle">Pending</p>
+        <ul>
+            {% for task in tasks %}
+            {% if task.status == 'pending' %}
+            <li class="notification is-light is-clickable" hx-get="{% url 'task-update' task.pk %}" hx-target="#taskModal">
+                {{ task }}
+            </li>
+            {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="column">
+        <p class="subtitle">In-progress</p>
+        <ul>
+            {% for task in tasks %}
+            {% if task.status == 'in-progress' %}
+            <li class="notification is-warning is-clickable" hx-get="{% url 'task-update' task.pk %}" hx-target="#taskModal">
+                {{ task }}
+            </li>
+            {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="column">
+        <p class="subtitle">Complete</p>
+        <ul>
+            {% for task in tasks %}
+            {% if task.status == 'complete' %}
+            <li class="notification is-success is-clickable" hx-get="{% url 'task-update' task.pk %}" hx-target="#taskModal">
+                {{ task }}
+            </li>
+            {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+<div id="taskModal"></div>

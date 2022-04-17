@@ -1,0 +1,27 @@
+<form hx-post="{% url 'task-create' %}" x-data="{ isOpen: true }">
+  {% csrf_token %}
+  <div class="modal" :class="{ 'is-active': isOpen }">
+    <div class="modal-background"></div>
+    <div class="modal-card" @click.away="isOpen = false">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Create Task</p>
+        <div class="delete" @click="isOpen = false"></div>
+      </header>
+      <section class="modal-card-body">
+        <div class="field">
+          {% for field in form %}
+            <label class="label">{{ field.label }}</label>
+            {{ field }}
+              {% for error in field.errors %}
+                <p class="help is-danger">{{ error }}</p>
+              {% endfor %}
+          {% endfor %}
+        </div>
+      </section>
+      <footer class="modal-card-foot is-flex is-justify-content-start">
+        <button class="button is-success">Save Task</button>
+        <div class="button text-center" @click="isOpen = false">Cancel</div>
+      </footer>
+    </div>
+  </div>
+</form>
