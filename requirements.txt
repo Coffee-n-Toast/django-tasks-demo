@@ -1,0 +1,17 @@
+asgiref==3.5.0
+defusedxml==0.7.1
+diff-match-patch==20200713
+Django==4.0.3
+django-import-export==2.8.0
+et-xmlfile==1.1.0
+gunicorn==20.1.0
+MarkupPy==1.14
+odfpy==1.4.1
+openpyxl==3.0.9
+PyYAML==6.0
+sqlparse==0.4.2
+tablib==3.2.1
+tzdata==2022.1
+whitenoise==6.0.0
+xlrd==2.0.1
+xlwt==1.3.0
